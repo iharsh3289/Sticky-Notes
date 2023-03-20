@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="header shared-note darkmode-ignore" id="header">
+        <div class="container">
+            <div class="col-md-3 col-sm-5">
+                <a style="font-size: 30px" href="{% url 'home' %}">
+                    <h2 style="font-size: 30px">Shared Note</h2>
+                </a>
+            </div>
+            <div class="col-md-6 col-md-push-3 col-sm-7">
+                <div class="hold-img">
+                    <img src="{% static 'img/Group 12.svg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notes" class="notes">
+        <div class="container">
+            <div class="col-md-offset-4 col-sm-offset-2 col-md-4 col-sm-8">
+                <div class="single-note shared {{ color|default_if_none:"white" }}">
+                    {% if checked %}
+                        <h2 class="isDone">{{ title|default_if_none:"" }}</h2>
+                        <small>The Date: {{ date|default_if_none:"" }} </small>
+                        <hr>
+                        <p class="isDone">{{ description|default_if_none:"" }}</p>
+                    {% else %}
+                        <h2>{{ title|default_if_none:"" }}</h2>
+                        <small>The Date: {{ date|default_if_none:"" }} </small>
+                        <hr>
+                        <p>{{ description|default_if_none:"" }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
